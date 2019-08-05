@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/note_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/layout_note_toolbar" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <com.javeria.notes.LineEditText
+        android:id="@+id/note_text"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:autofillHints="@string/note_hint"
+        android:gravity="top"
+        android:hint="@string/note_hint"
+        android:inputType="text"
+        android:background="@color/yellow"
+        android:padding="5dp"
+        android:textColor="#000"
+        android:textSize="23sp"
+        android:imeOptions="flagNoExtractUi"/>
+
+</LinearLayout>
