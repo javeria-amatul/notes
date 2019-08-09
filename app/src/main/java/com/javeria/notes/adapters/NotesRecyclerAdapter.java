@@ -37,7 +37,7 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
 
     @Override
     public int getItemCount() {
-        return mNotes.size() > 0 ? mNotes.size() : 0;
+        return mNotes.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -56,13 +56,13 @@ public class NotesRecyclerAdapter extends RecyclerView.Adapter<NotesRecyclerAdap
         @Override
         public void onClick(View v) {
             Log.d("NoteListActivity", "position: " + getAdapterPosition());
-            onNotesClickListener.onNotesClick(getAdapterPosition());
+            onNotesClickListener.onNoteClick(getAdapterPosition());
         }
 
     }
 
     public interface OnNotesClickListener {
-        void onNotesClick(int position);
+        void onNoteClick(int position);
     }
 
 

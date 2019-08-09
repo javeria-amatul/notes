@@ -2,6 +2,7 @@ package com.javeria.notes.models;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
 import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -9,7 +10,6 @@ import android.support.annotation.NonNull;
 
 @Entity(tableName = "notes")
 public class Note implements Parcelable {
-
     @PrimaryKey(autoGenerate = true)
     private int id;
 
@@ -30,6 +30,35 @@ public class Note implements Parcelable {
         this.timestamp = timestamp;
     }
 
+    protected Note(Parcel in) {
+        id = in.readInt();
+        title = in.readString();
+        content = in.readString();
+        timestamp = in.readString();
+    }
+
+    public static final Creator<Note> CREATOR = new Creator<Note>() {
+        @Override
+        public Note createFromParcel(Parcel in) {
+            return new Note(in);
+        }
+
+        @Override
+        public Note[] newArray(int size) {
+            return new Note[size];
+        }
+    };
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+
+    @Ignore
     public Note() {
 
     }
@@ -62,7 +91,6 @@ public class Note implements Parcelable {
     @Override
     public String toString() {
         return "Note{" +
-                "id=" + id + '\'' +
                 "title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", timestamp='" + timestamp + '\'' +
@@ -76,6 +104,9 @@ public class Note implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
+        dest.writeInt(id);
+        dest.writeString(title);
+        dest.writeString(content);
+        dest.writeString(timestamp);
     }
 }

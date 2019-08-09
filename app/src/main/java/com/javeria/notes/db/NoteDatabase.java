@@ -23,5 +23,5 @@ public abstract class NoteDatabase extends RoomDatabase {
         return instance;
     }
 
-
+    public abstract NoteDao getNoteDao();
 }
